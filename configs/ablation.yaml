@@ -1,0 +1,57 @@
+# Ablation study configuration: Baseline without adaptive curriculum
+
+experiment:
+  name: "mmlu_baseline_no_curriculum"
+  seed: 42
+  output_dir: "results/ablation"
+  checkpoint_dir: "checkpoints/ablation"
+
+data:
+  dataset_name: "cais/mmlu"
+  subset: "all"
+  cache_dir: "./cache"
+  max_length: 512
+  num_workers: 4
+
+model:
+  name: "bert-base-uncased"
+  num_classes: 4
+  dropout_rate: 0.1
+  use_calibration: false
+  freeze_backbone_epochs: 0
+
+training:
+  num_epochs: 10
+  batch_size: 16
+  learning_rate: 0.00003
+  weight_decay: 0.01
+  warmup_steps: 500
+  max_grad_norm: 1.0
+  use_amp: true
+  gradient_accumulation_steps: 1
+  eval_steps: 500
+  save_steps: 1000
+  logging_steps: 100
+  early_stopping_patience: 3
+
+curriculum:
+  curriculum_update_freq: 100
+  uncertainty_weight: 0.0
+  mc_samples: 1
+  temperature: 1.0
+  enable_curriculum: false
+
+optimizer:
+  type: "adamw"
+  betas: [0.9, 0.999]
+  eps: 0.00000001
+
+scheduler:
+  type: "cosine_warmup"
+  t_0: 500
+  t_mult: 2
+
+evaluation:
+  compute_uncertainty: false
+  per_domain_analysis: true
+  save_predictions: true

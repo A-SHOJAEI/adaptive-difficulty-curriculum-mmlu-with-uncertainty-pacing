@@ -1,0 +1,57 @@
+# Default configuration for adaptive curriculum learning on MMLU
+
+experiment:
+  name: "adaptive_curriculum_mmlu_default"
+  seed: 42
+  output_dir: "results"
+  checkpoint_dir: "checkpoints"
+
+data:
+  dataset_name: "cais/mmlu"
+  subset: "all"
+  cache_dir: "./cache"
+  max_length: 512
+  num_workers: 4
+
+model:
+  name: "bert-base-uncased"
+  num_classes: 4
+  dropout_rate: 0.3
+  use_calibration: true
+  freeze_backbone_epochs: 0
+
+training:
+  num_epochs: 10
+  batch_size: 16
+  learning_rate: 0.00003
+  weight_decay: 0.01
+  warmup_steps: 500
+  max_grad_norm: 1.0
+  use_amp: true
+  gradient_accumulation_steps: 1
+  eval_steps: 500
+  save_steps: 1000
+  logging_steps: 100
+  early_stopping_patience: 3
+
+curriculum:
+  curriculum_update_freq: 100
+  uncertainty_weight: 0.5
+  mc_samples: 10
+  temperature: 2.0
+  enable_curriculum: true
+
+optimizer:
+  type: "adamw"
+  betas: [0.9, 0.999]
+  eps: 0.00000001
+
+scheduler:
+  type: "cosine_warmup"
+  t_0: 500
+  t_mult: 2
+
+evaluation:
+  compute_uncertainty: true
+  per_domain_analysis: true
+  save_predictions: true

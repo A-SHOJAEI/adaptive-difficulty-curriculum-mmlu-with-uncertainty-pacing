@@ -1,0 +1,29 @@
+[
+  {
+    "question": "What is the primary function of mitochondria in eukaryotic cells?",
+    "choices": [
+      "Protein synthesis",
+      "Energy production",
+      "DNA replication",
+      "Lipid storage"
+    ]
+  },
+  {
+    "question": "Which of the following best describes the principle of checks and balances in the U.S. government?",
+    "choices": [
+      "Each branch has some power over the others",
+      "The President has ultimate authority",
+      "Congress controls all three branches",
+      "The judiciary makes all final decisions"
+    ]
+  },
+  {
+    "question": "What is the derivative of f(x) = x^2 + 3x?",
+    "choices": [
+      "2x + 3",
+      "x^2 + 3",
+      "2x",
+      "x + 3"
+    ]
+  }
+]
