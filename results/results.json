@@ -1,0 +1,16 @@
+{
+  "project": "Adaptive Difficulty Curriculum Learning for MMLU with Uncertainty-Based Pacing",
+  "dataset": "MMLU (57 tasks)",
+  "model": "DeBERTa-v3-base",
+  "training": {
+    "num_epochs_trained": 6,
+    "batch_size": 16,
+    "learning_rate": 3e-05,
+    "mixed_precision": true
+  },
+  "metrics": {
+    "best_val_accuracy": 0.2534,
+    "final_train_loss": 1.7313,
+    "final_val_loss": 1.3893
+  }
+}
